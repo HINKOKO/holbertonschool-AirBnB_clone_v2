@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
 Simple module that starts a Flask web application
+Starting to display formatted text and conditional message
 """
 from flask import Flask
 
