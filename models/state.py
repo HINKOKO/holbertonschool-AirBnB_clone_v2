@@ -22,15 +22,16 @@ class State(BaseModel, Base):
     else:
         name = ""
 
-    @property
-    def cities(self):
-        """
-        Getter - returns the list of City instances
-        with state_id == State.id
-        FileStorage relationship between State and City
-        """
-        l_cities = []
-        for city in models.storage.all('City').values():
-            if city.state_id == self.id:
-                l_cities.append(city)
-        return l_cities
+    if getenv('HBNB_TYPE_STORAGE') != 'db':
+        @property
+        def cities(self):
+            """
+            Getter - returns the list of City instances
+            with state_id == State.id
+            FileStorage relationship between State and City
+            """
+            l_cities = []
+            for city in models.storage.all('City').values():
+                if city.state_id == self.id:
+                    l_cities.append(city)
+            return l_cities
