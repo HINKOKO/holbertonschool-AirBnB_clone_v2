@@ -6,6 +6,7 @@ Addind basic template
 """
 from flask import Flask, render_template
 from models import storage
+from models.state import State
 from models import *
 
 app = Flask(__name__)
@@ -27,7 +28,7 @@ def list_states(id=None):
     Displays 9-states.html page
     accordingly to conditions
     """
-    states = storage.all(State).values()
+    states = storage.all(State)
     if id is not None:
         id = 'State.' + id
     return render_template('9-states.html', states=states, id=id)
