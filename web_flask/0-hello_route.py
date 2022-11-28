@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 from flask import Flask
+"""
+Simple module that starts a Flask web application
+"""
 
 app = Flask(__name__)
 
