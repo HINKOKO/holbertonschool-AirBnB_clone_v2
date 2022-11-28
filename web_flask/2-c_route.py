@@ -28,7 +28,7 @@ def c_is_mylove(text):
     """
     displays 'C' followed by the value of text variable
     """
-    return "C" + text.replace('_', ' ')
+    return "C " + text.replace('_', ' ')
 
 
 if __name__ == "__main__":
