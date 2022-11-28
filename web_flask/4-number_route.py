@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/", strict_slashes=False)
 def hello():
-    """
+    """ 
     displays Hello HBNB
     """
     return "Hello HBNB!"
@@ -46,7 +46,7 @@ def is_num(n):
     """
     Displays message only if n is an integer
     """
-    return f"{n} is a number"
+    return "{:d} is a number".format(n)
 
 
 if __name__ == "__main__":
