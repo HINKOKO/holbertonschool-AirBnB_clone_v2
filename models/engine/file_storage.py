@@ -43,16 +43,16 @@ class FileStorage:
         from models.review import Review
 
         classes = {
-                    'BaseModel': BaseModel, 'User': User, 'Place': Place,
-                    'State': State, 'City': City, 'Amenity': Amenity,
-                    'Review': Review
-                  }
+            'BaseModel': BaseModel, 'User': User, 'Place': Place,
+            'State': State, 'City': City, 'Amenity': Amenity,
+            'Review': Review
+        }
         try:
             temp = {}
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
 
@@ -61,3 +61,10 @@ class FileStorage:
         if obj is not None:
             bye_key = str(obj.__class__.__name__) + '.' + (obj.id)
             FileStorage.__objects.pop(bye_key)
+
+    def close(self):
+        """
+        call reload() method to deserialize JSON
+        file to objects
+        """
+        self.reload()

@@ -84,8 +84,8 @@ class DBStorage:
         self.__session = Session()
 
     def close(self):
-        """close session, proper ending"""
-        self.__session.close()
+        """Call remove method on private session attribute"""
+        self.__session.remove()
 
     def classes(self):
         """ returns dictionary of valid classes """
